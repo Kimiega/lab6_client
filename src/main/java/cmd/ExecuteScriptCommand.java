@@ -14,6 +14,10 @@ import java.util.HashMap;
 public class ExecuteScriptCommand implements ICommand {
 
     @Override
+    public boolean isLocal(){
+        return true;
+    }
+    @Override
     public String getName() {
         return "execute_script";
     }
@@ -39,9 +43,9 @@ public class ExecuteScriptCommand implements ICommand {
                    readerFile,
                    env.getOut(),
                    true,
-                   env.getClientPort(),
-                   env.getServerPort(),
-                   env.getServerAddress());
+                   env.getClientPort());
+            envScript.setServerAddress(env.getServerAddress());
+            envScript.setServerPort(env.getServerPort());
             envScript.getCommandMap().remove(getName());
             Client clientScript = new Client(envScript);
             try{clientScript.init();}

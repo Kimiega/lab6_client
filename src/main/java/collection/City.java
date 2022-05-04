@@ -4,8 +4,6 @@ import java.util.Date;
 
 public class City implements Comparable<City>, Serializable {
     private static final long serialVersionUID = 1L;
-
-    private static int idOrder = 0;
     private int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -20,7 +18,6 @@ public class City implements Comparable<City>, Serializable {
 
     public City (String name, Coordinates coordinates, Date creationDate, int area, Long population, Float metersAboveSeaLevel,
                  int timezone, Long agglomeration, Climate climate,Human governor) {
-        this.id = ++idOrder;
         this.name = name;
         this.coordinates = coordinates;
         this.creationDate = creationDate;
@@ -33,12 +30,6 @@ public class City implements Comparable<City>, Serializable {
         this.governor = governor;
     }
 
-    protected static void setIdOrder(int idOrder) {
-        City.idOrder = idOrder;
-    }
-    protected static int getIdOrder(){
-        return idOrder;
-    }
     public int getId() {
         return id;
     }

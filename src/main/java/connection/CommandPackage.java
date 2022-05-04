@@ -1,18 +1,20 @@
 package connection;
 
-import cmd.ICommand;
+import java.io.Serializable;
 
-public class CommandPackage {
+public class CommandPackage implements Serializable {
     private String name;
     private String description;
     private boolean hasArg;
     private boolean hasObject;
+    private boolean finish;
 
-    public CommandPackage(String name, String description, boolean hasArg, boolean hasObject){
+    public CommandPackage(String name, String description, boolean hasArg, boolean hasObject, boolean finish){
         this.name = name;
         this.description = description;
         this.hasArg = hasArg;
         this.hasObject = hasObject;
+        this.finish = finish;
     }
 
     public String getName() {
@@ -29,5 +31,9 @@ public class CommandPackage {
 
     public boolean isHasObject() {
         return hasObject;
+    }
+
+    public boolean isFinish() {
+        return finish;
     }
 }

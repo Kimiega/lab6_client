@@ -14,18 +14,18 @@ public class Environment {
     private boolean running;
     private final boolean script;
     private int clientPort;
-    private int serverPort;
+    private Integer serverPort;
     private InetAddress serverAddress;
     private boolean trasmitted;
 
-    public Environment(HashMap<String, ICommand> commandMap, IReadable in, IWritable out, boolean isScript, int clientPort, int serverPort, InetAddress serverAddress){
+    public Environment(HashMap<String, ICommand> commandMap, IReadable in, IWritable out, boolean isScript, int clientPort){
         this.commandMap = commandMap;
         this.in = in;
         this.out = out;
         this.script = isScript;
         this.clientPort = clientPort;
-        this.serverPort = serverPort;
-        this.serverAddress = serverAddress;
+        this.serverPort = null;
+        this.serverAddress = null;
         running = true;
     }
 
@@ -55,15 +55,11 @@ public class Environment {
     public int getServerPort() {
         return serverPort;
     }
-
+    public void setServerPort(Integer serverPort) {this.serverPort = serverPort;}
     public InetAddress getServerAddress() {
         return serverAddress;
     }
-
-    public void setTrasmitted(boolean trasmitted) {
-        this.trasmitted = trasmitted;
-    }
-    public boolean getTrasmitted() {
-        return trasmitted;
+    public void setServerAddress(InetAddress serverAddress) {
+        this.serverAddress = serverAddress;
     }
 }

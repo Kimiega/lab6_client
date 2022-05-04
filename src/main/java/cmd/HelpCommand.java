@@ -8,6 +8,10 @@ import java.util.HashMap;
 public class HelpCommand implements ICommand {
 
     @Override
+    public boolean isLocal(){
+        return true;
+    }
+    @Override
     public String getName() {
         return "help";
     }

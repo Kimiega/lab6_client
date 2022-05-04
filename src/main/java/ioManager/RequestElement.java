@@ -70,8 +70,8 @@ public class RequestElement {
         return o;
     }
     private String readName(){
-        String name = (String)readArgWhile("Введите название города: ", "Название не может быть пустым и должно быть меньше или равно 1024 символов",
-                (s) -> s!=null && !s.isEmpty() && s.length()<=1024, ()->readStr());
+        String name = (String)readArgWhile("Введите название города: ", "Название не может быть пустым и длина должна быть меньше или равна 128 символов",
+                (s) -> s!=null && !s.isEmpty() && s.length()<=128, ()->readStr());
         return name;
     }
 
@@ -120,8 +120,8 @@ public class RequestElement {
     }
     private Human readGovernor(){
         Human governor;
-        String governorName = (String)readArgWhile("Введите имя мэра: ", "Имя должно состоять из символов и должно быть меньше или равно 1024 символов",
-                (s) -> s!=null, this::readStr);
+        String governorName = (String)readArgWhile("Введите имя мэра: ", "Имя должно состоять из символов и его длина должна быть меньше или равна 128 символов",
+                (s) -> s!=null && s.length()<=128, this::readStr);
         if (governorName.isEmpty())
             governor = null;
         else {

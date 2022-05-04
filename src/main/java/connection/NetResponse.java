@@ -6,6 +6,11 @@ public class NetResponse implements Serializable {
     private String message;
     private boolean finish;
 
+    public NetResponse(){}
+    public NetResponse(String message,boolean finish){
+        this.message = message;
+        this.finish = finish;
+    }
     public void setMessage(String message) {
         this.message = message;
     }
@@ -22,3 +27,4 @@ public class NetResponse implements Serializable {
         return finish;
     }
 }
+

@@ -5,7 +5,7 @@ import connection.NetPackage;
 
 import java.util.HashMap;
 
-public class ExitCommand implements ICommand {
+public class DisconnectCommand implements ICommand {
 
     @Override
     public boolean isLocal(){
@@ -14,22 +14,24 @@ public class ExitCommand implements ICommand {
 
     @Override
     public String getName() {
-        return "exit";
+        return "disconnect";
     }
 
     @Override
     public String getDescription() {
 
-        return "exit                    | Завершить работу клиента";
+        return "disconnect              | Прекращает взаимодействие с сервером";
     }
 
     @Override
     public void execute(Environment env, String arg, NetPackage netPackage) {
-        env.getOut().writeln("Finish of working! Thanks for using!");
-        env.turnOff();
+        env.setServerAddress(null);
+        env.setServerPort(null);
+        env.getCommandMap().entrySet().removeIf((s)->!s.getValue().isLocal());
+        env.getOut().writeln("Вы отключились от сервера");
     }
     public static void register(HashMap<String, ICommand> commandMap) {
-        ICommand cmd = new ExitCommand();
+        ICommand cmd = new DisconnectCommand();
         commandMap.put(cmd.getName(), cmd);
     }
 }
